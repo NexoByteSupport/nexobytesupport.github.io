@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NexoBytes – Tech Support Team</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="NexoLogo.png">
+
+<style>
+    /* ===== Base ===== */
+    :root {
+        --bg-dark: #020617;
+        --bg-blue-top: #1e3a8a;
+        --bg-blue-bottom: #1e40af;
+        --accent: #3b82f6;
+        --accent-soft: #67e8f9;
+        --text-main: #e2e8f0;
+        --text-muted: #94a3b8;
+        --card-bg: rgba(15,23,42,0.85);
+        --border-subtle: rgba(148,163,184,0.35);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        background: radial-gradient(circle at top, var(--bg-blue-top), var(--bg-blue-bottom) 45%, #020617 100%);
+        color: var(--text-main);
+    }
+
+    /* ===== Header / Nav ===== */
+    header {
+        background: #000;
+        padding: 1rem 2.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.2rem;
+        color: white;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+    }
+
+    header img {
+        height: 52px;
+        width: 52px;
+        border-radius: 12px;
+        object-fit: cover;
+        background: white;
+        padding: 4px;
+        box-shadow: 0 0 12px rgba(255,255,255,0.4);
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .nav-links a {
+        color: #e5e7eb;
+        text-decoration: none;
+        padding: 0.3rem 0.6rem;
+        border-radius: 999px;
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+        background: rgba(148,163,184,0.2);
+        color: white;
+    }
+
+    /* ===== Layout ===== */
+    .container {
+        max-width: 960px;
+        margin: 2.8rem auto 3.5rem;
+        padding: 0 1.5rem;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+        gap: 2rem;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+
+    .hero-main h2 {
+        font-size: 2.1rem;
+        margin: 0 0 0.6rem;
+        background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.4px;
+    }
+
+    .hero-main p {
+        margin: 0.4rem 0 1.2rem;
+        color: var(--text-main);
+        font-size: 1.02rem;
+    }
+
+    .hero-tagline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(15,23,42,0.85);
+        border: 1px solid rgba(148,163,184,0.4);
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: 0.7rem;
+    }
+
+    .hero-highlight {
+        color: var(--accent-soft);
+        font-weight: 500;
+    }
+
+    .hero-badge {
+        font-size: 0.78rem;
+        color: var(--accent-soft);
+    }
+
+    .hero-card {
+        background: var(--card-bg);
+        border-radius: 18px;
+        padding: 1.4rem 1.5rem;
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 18px 40px rgba(15,23,42,0.7);
+    }
+
+    .hero-card h3 {
+        margin: 0 0 0.6rem;
+        font-size: 1.1rem;
+    }
+
+    .hero-card p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+    }
+
+    /* ===== Sections ===== */
+    h2.section-title {
+        font-size: 1.6rem;
+        margin: 2.2rem 0 0.6rem;
+        background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.3px;
+    }
+
+    .card {
+        background: var(--card-bg);
+        padding: 1.6rem;
+        border-radius: 16px;
+        margin-top: 1rem;
+        border: 1px solid var(--border-subtle);
+        box-shadow: 0 14px 32px rgba(15,23,42,0.7);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px rgba(15,23,42,0.9);
+    }
+
+    .card p {
+        margin: 0.1rem 0;
+        color: var(--text-main);
+        font-size: 0.98rem;
+    }
+
+    .muted {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.8rem;
+    }
+
+    .pill {
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid rgba(148,163,184,0.5);
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    /* ===== Support Form ===== */
+    form {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.2rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 10px;
+        border: 1px solid rgba(148,163,184,0.5);
+        font-size: 0.95rem;
+        background: rgba(15,23,42,0.9);
+        color: var(--text-main);
+        transition: border 0.15s ease, background 0.15s ease;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: rgba(15,23,42,1);
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: #64748b;
+    }
+
+    textarea {
+        min-height: 130px;
+        resize: vertical;
+    }
+
+    button {
+        background: linear-gradient(90deg, var(--accent), var(--bg-blue-top));
+        color: white;
+        border: none;
+        padding: 0.85rem;
+        border-radius: 10px;
+        font-size: 0.98rem;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+        box-shadow: 0 10px 24px rgba(37,99,235,0.5);
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #60a5fa, #1d4ed8);
+        transform: translateY(-1px);
+        box-shadow: 0 14px 32px rgba(37,99,235,0.7);
+    }
+
+    .success-message {
+        display: none;
+        margin-top: 0.8rem;
+        color: var(--accent-soft);
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+
+    .error-message {
+        display: none;
+        margin-top: 0.8rem;
+        color: #fecaca;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+        margin-top: 3.5rem;
+        padding: 1.5rem;
+        text-align: center;
+        background: #000;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        border-top: 1px solid rgba(15,23,42,0.9);
+    }
+
+    footer span.brand {
+        font-weight: 500;
+        color: var(--accent-soft);
+    }
+
+    @media (max-width: 800px) {
+        .hero {
+            grid-template-columns: minmax(0, 1fr);
+        }
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.6rem;
+        }
+        .nav-links {
+            flex-wrap: wrap;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <img src="NexoLogo.png" alt="NexoBytes Logo">
+        <h1>NexoBytes – Tech Support Team</h1>
+    </div>
+    <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#mission">Mission</a>
+        <a href="#support">Support</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!-- Hero -->
+    <section class="hero" id="about">
+        <div class="hero-main">
+            <div class="hero-tagline">
+                <span class="hero-badge">Live Tech Support</span>
+                <span>Slow PC, broken Wi‑Fi, weird errors?</span>
+            </div>
+            <h2>Tech issues, handled without the headache.</h2>
+            <p>
+                NexoBytes gives you straightforward, no‑nonsense support for the devices you rely on every day.
+                No scripts, no jargon—just clear fixes that actually work.
+            </p>
+            <p class="muted">
+                From performance problems to setup help, we focus on getting you back to normal as quickly as possible.
+            </p>
+        </div>
+        <aside class="hero-card">
+            <h3>How we work</h3>
+            <p>Tell us what’s broken. We diagnose, explain the fix in plain language, and guide you through it step by step.</p>
+            <p class="muted" style="margin-top:0.6rem;">You don’t need to “speak tech” to get things working again.</p>
+        </aside>
+    </section>
+
+    <!-- Services -->
+    <h2 class="section-title" id="services">What We Help With</h2>
+    <section class="card">
+        <p>
+            NexoBytes supports everyday users and small teams with the kind of issues that slow you down:
+        </p>
+        <div class="pill-row">
+            <div class="pill">Slow or freezing computers</div>
+            <div class="pill">Wi‑Fi drops & network issues</div>
+            <div class="pill">Software installs & setup</div>
+            <div class="pill">Basic troubleshooting & cleanup</div>
+            <div class="pill">Account & login problems</div>
+            <div class="pill">General “something’s not right” issues</div>
+        </div>
+        <p class="muted" style="margin-top:0.9rem;">
+            If you’re not sure what’s wrong, that’s fine—describe what you see, and we’ll take it from there.
+        </p>
+    </section>
+
+    <!-- Story -->
+    <h2 class="section-title">Who Started NexoBytes</h2>
+    <section class="card">
+        <p>
+            NexoBytes was created by someone who wanted to understand tech support from the ground up—how devices fail,
+            how to fix them properly, and how to explain it without making people feel stupid.
+        </p>
+        <p>
+            What began as a personal interest in repair and troubleshooting turned into a goal: make support feel human,
+            honest, and actually useful. In 2024, that idea became the NexoBytes Foundation.
+        </p>
+    </section>
+
+    <!-- Mission -->
+    <h2 class="section-title" id="mission">Our Mission</h2>
+    <section class="card">
+        <p>
+            Technology should make life easier, not more frustrating. Our mission is to keep your devices running smoothly
+            so you can focus on what matters—work, friends, games, or just a quiet evening without error messages.
+        </p>
+        <p class="muted">
+            We aim to be the team you can rely on when things go wrong, and the people you trust to keep everything running right.
+        </p>
+    </section>
+
+    <!-- Support -->
+    <h2 class="section-title" id="support">Submit a Support Ticket</h2>
+    <section class="card">
+        <p>
+            Tell us what’s going on and we’ll get back to you as soon as we can. The more detail you give, the faster we can help.
+        </p>
+
+        <form id="support-form" action="https://formspree.io/f/mvzywevy" method="POST">
+            <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your Name" required>
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+
+            <div>
+                <label for="message">What seems to be the problem?</label>
+                <textarea id="message" name="message" placeholder="Describe the issue, when it started, and anything you've already tried." required></textarea>
+            </div>
+
+            <button type="submit">Submit Ticket</button>
+        </form>
+
+        <p class="success-message" id="success-message">
+            ✅ Ticket received. We’ll review it and get back to you as soon as possible.
+        </p>
+        <p class="error-message" id="error-message">
+            ⚠️ Something went wrong sending your ticket. Please try again in a moment.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    © <span id="year"></span> <span class="brand">NexoBytes Foundation</span>. All rights reserved.
+</footer>
+
+<script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Formspree JSON submit
+    const form = document.getElementById("support-form");
+    const successMessage = document.getElementById("success-message");
+    const errorMessage = document.getElementById("error-message");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        successMessage.style.display = "none";
+        errorMessage.style.display = "none";
+
+        const data = {
+            name: form.name.value,
+            email: form.email.value,
+            message: form.message.value
+        };
+
+        try {
+            const response = await fetch(form.action, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                successMessage.style.display = "block";
+                form.reset();
+            } else {
+                errorMessage.style.display = "block";
+            }
+        } catch (err) {
+            errorMessage.style.display = "block";
+        }
+    });
+</script>
+
+</body>
+</html>
