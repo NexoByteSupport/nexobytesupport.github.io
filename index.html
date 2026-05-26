@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NexoByte Support</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    body{
+      background:#050816;
+      color:#e5e7eb;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* Background Glow */
+    .bg-glow{
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
+      top:-200px;
+      right:-200px;
+      z-index:-1;
+      filter:blur(40px);
+    }
+
+    /* Navbar */
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter:blur(12px);
+      background:rgba(5,8,22,0.65);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      z-index:1000;
+    }
+
+    nav h1{
+      color:#60a5fa;
+      font-size:1.5rem;
+      font-weight:700;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:#d1d5db;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#60a5fa;
+    }
+
+    /* Hero */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:120px 8%;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:850px;
+    }
+
+    .hero h2{
+      font-size:4rem;
+      line-height:1.1;
+      margin-bottom:20px;
+      font-weight:700;
+    }
+
+    .hero h2 span{
+      color:#3b82f6;
+      text-shadow:0 0 20px rgba(59,130,246,0.7);
+    }
+
+    .hero p{
+      color:#9ca3af;
+      font-size:1.1rem;
+      margin-bottom:40px;
+      line-height:1.7;
+    }
+
+    .buttons{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:12px;
+      border:none;
+      cursor:pointer;
+      font-size:1rem;
+      transition:0.3s ease;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .primary{
+      background:#2563eb;
+      color:white;
+      box-shadow:0 0 25px rgba(37,99,235,0.5);
+    }
+
+    .primary:hover{
+      transform:translateY(-3px);
+      background:#3b82f6;
+    }
+
+    .secondary{
+      border:1px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.03);
+      color:white;
+    }
+
+    .secondary:hover{
+      background:rgba(255,255,255,0.08);
+    }
+
+    /* Sections */
+    section{
+      padding:100px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:2.5rem;
+      margin-bottom:60px;
+      color:white;
+    }
+
+    /* Services */
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#0b1220;
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:20px;
+      padding:35px;
+      transition:0.3s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:200px;
+      height:200px;
+      background:rgba(59,130,246,0.08);
+      border-radius:50%;
+      top:-80px;
+      right:-80px;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(59,130,246,0.4);
+      box-shadow:0 0 30px rgba(37,99,235,0.15);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#60a5fa;
+    }
+
+    .card p{
+      color:#9ca3af;
+      line-height:1.6;
+    }
+
+    /* Contact Form */
+    .contact-box{
+      max-width:700px;
+      margin:auto;
+      background:#0b1220;
+      padding:40px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    input,
+    textarea{
+      background:#111827;
+      border:none;
+      padding:16px;
+      border-radius:12px;
+      color:white;
+      font-size:1rem;
+      outline:none;
+      border:1px solid transparent;
+      transition:0.3s;
+    }
+
+    input:focus,
+    textarea:focus{
+      border-color:#3b82f6;
+      box-shadow:0 0 15px rgba(59,130,246,0.25);
+    }
+
+    textarea{
+      resize:none;
+      min-height:150px;
+    }
+
+    .submit-btn{
+      background:#2563eb;
+      color:white;
+      border:none;
+      padding:16px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:1rem;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .submit-btn:hover{
+      background:#3b82f6;
+      transform:translateY(-2px);
+    }
+
+    /* Footer */
+    footer{
+      padding:40px 8%;
+      text-align:center;
+      color:#6b7280;
+      border-top:1px solid rgba(255,255,255,0.05);
+      margin-top:80px;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+
+      .hero h2{
+        font-size:2.6rem;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .buttons{
+        flex-direction:column;
+      }
+
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <h1>NexoByte Support</h1>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#support">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-up">
+
+      <h2>
+        Professional <span>Tech Support</span><br>
+        For Modern Systems
+      </h2>
+
+      <p>
+        Fast troubleshooting, remote assistance, software support,
+        network diagnostics, and secure technical solutions for
+        individuals and businesses.
+      </p>
+
+      <div class="buttons">
+        <a href="#support" class="btn primary">Open Support Ticket</a>
+
+        <a href="https://forms.gle/" class="btn secondary" target="_blank">
+          Google Form
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+
+    <h2 class="section-title" data-aos="fade-up">
+      Our Services
+    </h2>
+
+    <div class="services">
+
+      <div class="card" data-aos="fade-up">
+        <h3>PC Troubleshooting</h3>
+        <p>
+          Diagnose and resolve hardware and software issues quickly.
+        </p>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Virus Removal</h3>
+        <p>
+          Secure malware cleanup and protection for your devices.
+        </p>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Remote Assistance</h3>
+        <p>
+          Real-time remote support for fast technical problem solving.
+        </p>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Network Support</h3>
+        <p>
+          Router setup, internet diagnostics, and connectivity fixes.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Support -->
+  <section id="support">
+
+    <h2 class="section-title" data-aos="fade-up">
+      Create Support Ticket
+    </h2>
+
+    <div class="contact-box" data-aos="zoom-in">
+
+      <form action="https://formspree.io/f/yourformid" method="POST">
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+        >
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        >
+
+        <textarea
+          name="message"
+          placeholder="Describe your issue..."
+          required
+        ></textarea>
+
+        <button class="submit-btn" type="submit">
+          Submit Ticket
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 NexoByte Support — Professional Technical Assistance
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+
+</body>
+</html>
