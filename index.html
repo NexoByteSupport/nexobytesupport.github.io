@@ -341,10 +341,56 @@
       box-shadow:0 0 18px rgba(250,204,21,0.18);
     }
 
+    .newbie{
+      background:rgba(204,85,0,0.15);
+      color:#cc5500;
+      box-shadow:0 0 18px rgba(204,85,0,0.15);
+    }
+
+    .partner{
+      background:rgba(105,191,240,0.15);
+      color:#69bff0;
+      box-shadow:0 0 18px rgba(105,191,240,0.15);
+    }
+
     .team-card p{
       color:#9ca3af;
       line-height:1.8;
       font-size:0.95rem;
+    }
+
+    /* More Staff */
+
+    .more-staff{
+      margin-top:50px;
+      text-align:center;
+      font-size:1.15rem;
+      color:#60a5fa;
+      font-weight:700;
+      letter-spacing:1px;
+      padding:18px;
+      border:1px solid rgba(96,165,250,0.15);
+      border-radius:18px;
+      background:rgba(59,130,246,0.05);
+      box-shadow:0 0 25px rgba(59,130,246,0.08);
+      animation:pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow{
+      0%{
+        transform:scale(1);
+        box-shadow:0 0 15px rgba(59,130,246,0.08);
+      }
+
+      50%{
+        transform:scale(1.01);
+        box-shadow:0 0 30px rgba(59,130,246,0.18);
+      }
+
+      100%{
+        transform:scale(1);
+        box-shadow:0 0 15px rgba(59,130,246,0.08);
+      }
     }
 
     /* Support */
@@ -573,6 +619,45 @@
 
       </div>
 
+      <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+
+        <img src="staff4.png" class="staff-avatar">
+
+        <div class="typing-text" id="typing4"></div>
+
+        <div class="typing-role newbie">
+          Newbie Helper
+        </div>
+
+        <p>
+          2 weeks of service. Making sure people are safe.
+        </p>
+
+      </div>
+
+      <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+
+        <img src="staff5.png" class="staff-avatar">
+
+        <div class="typing-text" id="typing5"></div>
+
+        <div class="typing-role partner">
+          Partnership Manager
+        </div>
+
+        <p>
+          Running partnerships for our company.
+          Veteran with 3+ years of work experience.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- More Staff Message -->
+
+    <div class="more-staff" data-aos="fade-up">
+      More Staff Members To Come!
     </div>
 
   </section>
@@ -659,6 +744,8 @@
     typeEffect("typing1", "Nexo");
     typeEffect("typing2", "BritishLucio");
     typeEffect("typing3", "Jaden A");
+    typeEffect("typing4", "Dylan");
+    typeEffect("typing5", "Jacob");
 
   </script>
 
