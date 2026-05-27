@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <title>NexoByte Support</title>
@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- AOS Animation Library -->
+  <!-- AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
 
   <style>
@@ -35,7 +35,8 @@
       overflow-x:hidden;
     }
 
-    /* Background Glow */
+    /* Glow Background */
+
     .bg-glow{
       position:fixed;
       width:700px;
@@ -55,6 +56,7 @@
     }
 
     /* Navbar */
+
     nav{
       position:fixed;
       width:100%;
@@ -64,8 +66,8 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
-      background:rgba(5,8,22,0.7);
-      backdrop-filter:blur(12px);
+      background:rgba(5,8,22,0.75);
+      backdrop-filter:blur(14px);
       border-bottom:1px solid rgba(255,255,255,0.05);
       z-index:1000;
     }
@@ -79,7 +81,6 @@
     .logo img{
       width:42px;
       height:42px;
-      object-fit:cover;
       border-radius:10px;
     }
 
@@ -87,7 +88,6 @@
       color:#60a5fa;
       font-size:1.5rem;
       font-weight:700;
-      letter-spacing:0.5px;
     }
 
     nav ul{
@@ -99,15 +99,33 @@
     nav ul li a{
       text-decoration:none;
       color:#d1d5db;
-      transition:0.3s;
-      font-size:0.95rem;
+      position:relative;
+      transition:0.35s ease;
+      padding-bottom:5px;
+    }
+
+    nav ul li a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:0%;
+      height:2px;
+      background:#60a5fa;
+      transition:0.35s ease;
+      border-radius:999px;
     }
 
     nav ul li a:hover{
       color:#60a5fa;
     }
 
+    nav ul li a:hover::after{
+      width:100%;
+    }
+
     /* Hero */
+
     .hero{
       min-height:100vh;
       display:flex;
@@ -115,7 +133,6 @@
       align-items:center;
       text-align:center;
       padding:120px 8%;
-      position:relative;
     }
 
     .hero-content{
@@ -142,6 +159,7 @@
     }
 
     /* Buttons */
+
     .buttons{
       display:flex;
       justify-content:center;
@@ -153,7 +171,7 @@
       padding:15px 30px;
       border-radius:14px;
       text-decoration:none;
-      transition:0.3s ease;
+      transition:0.35s ease;
       font-weight:600;
       font-size:1rem;
     }
@@ -165,11 +183,12 @@
     }
 
     .primary:hover{
-      transform:translateY(-4px);
+      transform:translateY(-5px) scale(1.02);
       background:#3b82f6;
     }
 
     /* Sections */
+
     section{
       padding:100px 8%;
     }
@@ -182,6 +201,7 @@
     }
 
     /* Services */
+
     .services{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -193,7 +213,7 @@
       border:1px solid rgba(255,255,255,0.06);
       border-radius:22px;
       padding:35px;
-      transition:0.35s ease;
+      transition:0.4s ease;
       position:relative;
       overflow:hidden;
     }
@@ -210,7 +230,7 @@
     }
 
     .card:hover{
-      transform:translateY(-8px);
+      transform:translateY(-8px) scale(1.02);
       border-color:rgba(59,130,246,0.4);
       box-shadow:0 0 30px rgba(37,99,235,0.18);
     }
@@ -226,7 +246,109 @@
       line-height:1.7;
     }
 
-    /* Contact */
+    /* Team */
+
+    .team-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:28px;
+    }
+
+    .team-card{
+      background:linear-gradient(180deg,#0b1220,#0f172a);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:24px;
+      padding:32px;
+      transition:0.45s ease;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .team-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        135deg,
+        rgba(59,130,246,0.12),
+        transparent 45%
+      );
+      opacity:0;
+      transition:0.4s ease;
+    }
+
+    .team-card:hover{
+      transform:translateY(-10px) scale(1.02);
+      border-color:rgba(96,165,250,0.35);
+      box-shadow:
+        0 10px 40px rgba(37,99,235,0.18),
+        0 0 25px rgba(59,130,246,0.08);
+    }
+
+    .team-card:hover::before{
+      opacity:1;
+    }
+
+    .staff-avatar{
+      width:78px;
+      height:78px;
+      border-radius:18px;
+      object-fit:cover;
+      border:2px solid rgba(96,165,250,0.4);
+      margin-bottom:20px;
+    }
+
+    .typing-text{
+      font-size:1.3rem;
+      font-weight:700;
+      color:#f3f4f6;
+      margin-bottom:14px;
+      min-height:32px;
+    }
+
+    /* Rank Badges */
+
+    .typing-role{
+      display:inline-block;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:0.82rem;
+      font-weight:700;
+      margin-bottom:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.35s ease;
+    }
+
+    .typing-role:hover{
+      transform:scale(1.05);
+    }
+
+    .founder{
+      background:rgba(168,85,247,0.15);
+      color:#c084fc;
+      box-shadow:0 0 18px rgba(168,85,247,0.18);
+    }
+
+    .helper{
+      background:rgba(34,197,94,0.15);
+      color:#4ade80;
+      box-shadow:0 0 18px rgba(34,197,94,0.18);
+    }
+
+    .senior{
+      background:rgba(250,204,21,0.15);
+      color:#facc15;
+      box-shadow:0 0 18px rgba(250,204,21,0.18);
+    }
+
+    .team-card p{
+      color:#9ca3af;
+      line-height:1.8;
+      font-size:0.95rem;
+    }
+
+    /* Support */
+
     .contact-box{
       max-width:750px;
       margin:auto;
@@ -251,9 +373,11 @@
       font-size:1rem;
       outline:none;
       border:1px solid transparent;
+      transition:0.3s ease;
     }
 
-    input:focus, textarea:focus{
+    input:focus,
+    textarea:focus{
       border-color:#3b82f6;
       box-shadow:0 0 18px rgba(59,130,246,0.25);
     }
@@ -272,14 +396,16 @@
       cursor:pointer;
       font-size:1rem;
       font-weight:600;
+      transition:0.35s ease;
     }
 
     .submit-btn:hover{
-      transform:translateY(-3px);
+      transform:translateY(-4px);
       background:#3b82f6;
     }
 
     /* Footer */
+
     footer{
       margin-top:80px;
       padding:40px 8%;
@@ -289,9 +415,15 @@
     }
 
     @media(max-width:768px){
-      .hero h2{font-size:2.8rem;}
-      nav ul{display:none;}
-      .buttons{flex-direction:column;}
+
+      .hero h2{
+        font-size:2.8rem;
+      }
+
+      nav ul{
+        display:none;
+      }
+
     }
 
   </style>
@@ -302,23 +434,27 @@
   <div class="bg-glow"></div>
 
   <!-- Navbar -->
+
   <nav>
 
     <div class="logo">
-      <img src="NexoLogo.png" alt="NexoByte Logo">
+      <img src="NexoLogo.png" alt="Logo">
       <h1>NexoByte Support</h1>
     </div>
 
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#team">Staff Team</a></li>
       <li><a href="#support">Support</a></li>
     </ul>
 
   </nav>
 
   <!-- Hero -->
+
   <section class="hero" id="home">
+
     <div class="hero-content" data-aos="fade-up">
 
       <h2>
@@ -327,71 +463,203 @@
       </h2>
 
       <p>
-        Fast troubleshooting, remote assistance, software support,
-        network diagnostics, and reliable technical assistance.
+        Fast troubleshooting, remote assistance,
+        software support, network diagnostics,
+        and reliable technical assistance.
       </p>
 
       <div class="buttons">
-        <a href="#support" class="btn primary">Open Support Ticket</a>
+        <a href="#support" class="btn primary">
+          Open Support Ticket
+        </a>
       </div>
 
     </div>
+
   </section>
 
   <!-- Services -->
+
   <section id="services">
-    <h2 class="section-title" data-aos="fade-up">Our Services</h2>
+
+    <h2 class="section-title" data-aos="fade-up">
+      Our Services
+    </h2>
 
     <div class="services">
 
-      <div class="card">
+      <div class="card" data-aos="fade-up">
         <h3>PC Troubleshooting</h3>
         <p>Diagnose and resolve hardware and software issues quickly.</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <h3>Virus Removal</h3>
         <p>Secure malware cleanup and system protection.</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <h3>Remote Assistance</h3>
         <p>Real-time remote support for technical problems.</p>
       </div>
 
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
         <h3>Network Support</h3>
         <p>Router setup, internet diagnostics, and optimization.</p>
       </div>
 
     </div>
+
+  </section>
+
+  <!-- Staff Team -->
+
+  <section id="team">
+
+    <h2 class="section-title" data-aos="fade-up">
+      Our Staff Team
+    </h2>
+
+    <div class="team-grid">
+
+      <div class="team-card" data-aos="fade-up">
+
+        <img src="staff1.png" class="staff-avatar">
+
+        <div class="typing-text" id="typing1"></div>
+
+        <div class="typing-role founder">
+          Head Founder
+        </div>
+
+        <p>
+          (Real Name Hidden For Privacy) Head Founder
+          of NexoByte Support.
+        </p>
+
+      </div>
+
+      <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+
+        <img src="staff2.png" class="staff-avatar">
+
+        <div class="typing-text" id="typing2"></div>
+
+        <div class="typing-role helper">
+          Trainee Helper
+        </div>
+
+        <p>
+          (Real Name Hidden For Privacy) Training to become an official
+          computer technician.
+        </p>
+
+      </div>
+
+      <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+
+        <img src="staff3.png" class="staff-avatar">
+
+        <div class="typing-text" id="typing3"></div>
+
+        <div class="typing-role senior">
+          Senior Helper
+        </div>
+
+        <p>
+          Helped with countless projects,
+          updates, and keeping systems secure.
+        </p>
+
+      </div>
+
+    </div>
+
   </section>
 
   <!-- Support -->
+
   <section id="support">
-    <h2 class="section-title">Create Support Ticket</h2>
+
+    <h2 class="section-title">
+      Create Support Ticket
+    </h2>
 
     <div class="contact-box">
+
       <form action="https://formspree.io/f/mvzywevy" method="POST">
 
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Describe your issue..." required></textarea>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+        >
 
-        <button class="submit-btn" type="submit">Submit Ticket</button>
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        >
+
+        <textarea
+          name="message"
+          placeholder="Describe your issue..."
+          required
+        ></textarea>
+
+        <button class="submit-btn" type="submit">
+          Submit Ticket
+        </button>
 
       </form>
+
     </div>
+
   </section>
+
+  <!-- Footer -->
 
   <footer>
     © 2026 NexoByte Support — Professional Technical Assistance
   </footer>
 
-  <!-- AOS -->
+  <!-- Scripts -->
+
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
   <script>
-    AOS.init({ duration:1000, once:true });
+
+    AOS.init({
+      duration:1200,
+      once:true,
+      easing:'ease-out-cubic'
+    });
+
+    function typeEffect(elementId, text, speed = 90){
+
+      let i = 0;
+      const element = document.getElementById(elementId);
+
+      function typing(){
+
+        if(i < text.length){
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typing, speed);
+        }
+
+      }
+
+      typing();
+
+    }
+
+    typeEffect("typing1", "Nexo");
+    typeEffect("typing2", "BritishLucio");
+    typeEffect("typing3", "Jaden A");
+
   </script>
 
 </body>
